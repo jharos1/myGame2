@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لعبتي الفضائية 🚀</title>
+<link rel="stylesheet" href="style.css">
+<link href="Handjet.zip" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- شاشة البداية -->
+<div id="startScreen" class="overlay">
+    <h1>🚀 GM ANGL3</h1>
+    <p>اختر مستوى الصعوبة:</p>
+    <select id="diffLevel" class="difficulty-select">
+        <option value="1">من جنبها</option>
+        <option value="2">نص ونص</option>
+        <option value="3">شنب</option>
+    </select>
+    <div class="menu-box">
+        <button class="play-btn" onclick="initGame()">ابدأ المهمة</button>
+        <button class="settings-btn">⚙️ الإعدادات</button>
+    </div>
+</div>
+
+<!-- شاشة الإعدادات -->
+<div id="settingsScreen" class="overlay" style="display:none; flex-direction: column; align-items: center; justify-content: center;">
+    <h2>⚙️ الإعدادات</h2>
+
+    <!-- تغيير شكل اللاعب -->
+    <p>شكل اللاعب:</p>
+    <button class="play-btn" onclick="changePlayer('https://www.freeiconspng.com/uploads/red-rocket-png-5.png')">🚀 أحمر</button>
+    <button class="play-btn" onclick="changePlayer('https://www.freeiconspng.com/uploads/blue-rocket-png-27.png')">🚀 أزرق</button>
+
+    <!-- تغيير الوحوش -->
+    <p>شكل الوحوش:</p>
+    <button class="play-btn" onclick="changeEnemies(['https://emojiguide.com/wp-content/uploads/platform/google/43983.png'])">وحوش 1</button>
+    <button class="play-btn" onclick="changeEnemies(['https://emojiguide.com/wp-content/uploads/platform/apple/43983.png'])">وحوش 2</button>
+
+    <!-- زر تشغيل / إيقاف الموسيقى -->
+<button class="settings-btn" id="musicToggleBtn">🎵 موسيقى الخلفية: تشغيل</button>
+
+<!-- زر تشغيل / إيقاف المؤثرات -->
+<button class="settings-btn" id="effectsToggleBtn">🔊 المؤثرات: تشغيل</button>
+
+    <button class="play-btn" id="settingsBackBtn">عودة</button>
+</div>
+
+<!-- اللعبة -->
+<div id="gameContainer" style="display:none">
+    <div id="topBar">
+        <div>النقاط: <span id="scoreVal">0</span></div>
+        <div>أعلى نتيجة: <span id="highScoreVal">0</span></div>
+        <div id="livesVal">❤️❤️❤️</div>
+        <button class="play-btn" onclick="endGame()">إنهاء</button>
+    </div>
+    <div id="battleField">
+        <div class="stars-layer1"></div>
+        <div class="stars-layer2"></div>
+        <div id="player"><div class="thrust-fire"></div></div>
+    </div>
+    <button id="fireBtn">🔥 إطلاق النار</button>
+</div>
+
+<!-- شاشة انتهاء اللعبة -->
+<div id="gameOverScreen" class="overlay" style="display:none">
+    <h1>انتهت المهمة 🚀</h1>
+    <h2>نقاطك: <span id="finalScore">0</span></h2>
+    <h3>أعلى نتيجة: <span id="finalHighScore">0</span></h3>
+    <h2 id="rankText"></h2>
+    <button class="play-btn" onclick="location.reload()">إعادة اللعب</button>
+</div>
+
+<!-- الأصوات -->
+<audio id="laserSound" src="794590__cpfcfan10__sci-fi-laser-beams-3.wav"></audio>
+<audio id="explosionSound" src="86330__zgump__boom-1.wav"></audio>
+<audio id="bgMusic" src="840882__deybaa__drift-space-amb.mp3" loop></audio>
+<audio id="loseSound" src="840341__imp_sounds__ghost-horror-evil-laugh.mp3"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>
+<div class="menu-box">
+    <h1>🚀 العب وتخيل 🚀</h1>
+    <p>اختر مستوى الصعوبة:</p>
+    <select id="diffLevel">
+        <option value="1">مبتدئ</option>
+        <option value="2">محترف</option>
+        <option value="3">أسطوري</option>
+    </select>
+    <button class="play-btn" onclick="initGame()">ابدأ المهمة</button>
+    <button class="settings-btn" onclick="openSettings()">⚙️ الإعدادات</button>
+</div>

@@ -1,0 +1,121 @@
+body{margin:0;background:black;overflow:hidden;font-family:sans-serif;}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,0.9);color:#00f3ff;display:flex;flex-direction:column;justify-content:center;align-items:center;z-index:999;text-align:center;}
+#topBar{position:fixed;top:0;width:100%;height:50px;background:rgba(0,0,0,0.7);color:#00f3ff;display:flex;justify-content:space-around;align-items:center;z-index:100;}
+#battleField{width:100vw;height:100vh;position:relative;overflow:hidden;}
+#player{width:60px;height:75px;position:absolute;bottom:40px;background:url('https://www.freeiconspng.com/uploads/red-rocket-png-5.png') no-repeat center;background-size:contain;z-index:100;}
+.thrust-fire{position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);width:12px;height:25px;background:linear-gradient(to bottom,#ffae00,transparent);border-radius:50%;filter:blur(3px);animation:fireBurn 0.1s infinite alternate;}
+@keyframes fireBurn{from{height:20px;opacity:0.8}to{height:30px;opacity:1}}
+.enemy{width:50px;height:50px;position:absolute;background-size:contain;transform:rotate(180deg);}
+.laser{position:absolute;width:3px;height:20px;background:#00f3ff;box-shadow:0 0 10px #00f3ff;}
+.play-btn{padding:12px 25px;background:#00f3ff;border:none;font-weight:bold;cursor:pointer;border-radius:8px;margin:5px;}
+#fireBtn{position:fixed;bottom:20px;right:20px;padding:20px;border-radius:50%;font-size:20px;z-index:20;}
+.stars-layer1,.stars-layer2{position:absolute;width:200%;height:200%;top:0;left:0;background-repeat:repeat;z-index:0;}
+.stars-layer1{background-image:radial-gradient(rgb(65, 28, 28) 1px,transparent 1px);background-size:200px 200px;animation:moveStars1 20s linear infinite;opacity:0.5;}
+.stars-layer2{background-image:radial-gradient(rgba(118, 66, 7, 0.918) 2px,transparent 2px);background-size:300px 300px;animation:moveStars2 10s linear infinite;}
+@keyframes moveStars1{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+@keyframes moveStars2{from{transform:translateY(-50%)}to{transform:translateY(0)}}
+/* شاشة البداية */
+#startScreen{position: fixed; inset: 0; z-index: 1000; background: url('outer-space-background.jpg') no-repeat center center; background-size: cover; color: #f70000;}
+#startScreen h1{font-family:'Arial Black',sans-serif;font-size:48px;color:#931515;text-shadow:0 0 10px rgb(255, 255, 255),0 0 20px #0ff;}
+#startScreen p, #startScreen select, #startScreen button{font-family:Verdana,sans-serif;font-size:18px;color:rgb(255, 255, 255);}
+#startScreen::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,0.9);z-index:1;}
+#startScreen > * { position: relative; z-index: 2; }
+#startScreen .menu-box {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column; /* ترتيب عمودي */
+    align-items: center;    /* توسيط العناصر أفقياً */
+    justify-content: center; /* توسيط العناصر رأسياً */
+    gap: 15px; /* مسافة بين كل عنصر */
+    padding: 20px;
+}
+/*هنا اغير شكل الخط */
+#startScreen h1 {
+    font-family: 'Andalus', 'Courier New', monospace;
+    font-size: 56px;
+    color: #fbfbfb;
+    text-shadow: 0 0 10px #0ff;
+    text-align: center;
+
+}
+
+.difficulty-select {
+    width: 120px;
+    padding: 5px 10px;
+    font-size: 14px;
+    border-radius: 8px;
+    text-align: center;
+}
+/* زر إطلاق النار */
+#fireBtn {
+    background: rgba(216, 216, 216, 0.3); /* شبه شفاف */
+    color: #00f3ff;
+    border: 1px solid rgba(255, 255, 255, 0);
+    padding: 15px 25px;
+    font-weight: bold;
+    border-radius: 50%;
+    cursor: pointer;
+    font-family: 'Handjet', monospace;
+    transition: all 0.2s ease-in-out;
+    text-shadow: 0 0 3px #0ff;
+}
+
+/* تأثير عند تمرير الماوس */
+#fireBtn:hover {
+    background: rgba(92, 92, 92, 0.7);
+    box-shadow: 0 0 10px #0ff, 0 0 20px #00f3ff;
+    transform: scale(1.1);
+}
+/* ===== زر ابدأ المهمة فقط ===== */
+.play-btn {
+    background: linear-gradient(135deg, #80f77c, #0055ff);
+    color: #54ea9a;
+    border: 2px solid #828282;
+    font-size: 18px;
+    padding: 12px 30px;
+    border-radius: 12px;
+    text-shadow: 0 0 5px #0ff;
+    transition: all 0.2s ease-in-out;
+}
+
+/* تأثير عند تمرير الماوس */
+.play-btn:hover {
+    background: linear-gradient(135deg, #00ffff, #0088ff);
+    box-shadow: 0 0 15px #0ff, 0 0 25px #00f3ff;
+    transform: scale(1.05);
+}
+
+
+/* ===== كل الأزرار الأخرى (الإعدادات + مستوى الصعوبة + إطلاق النار) ===== */
+.settings-btn,
+select,
+#musicToggleBtn,
+#bgApplyBtn,
+#enemyApplyBtn,
+#settingsBackBtn,
+#fireBtn {
+    background: rgba(216, 216, 216, 0.3); /* شفاف زجاجي */
+    color: #00f3ff;
+    border: 1px solid rgba(255, 255, 255, 0);
+    padding: 10px 20px;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    font-family: 'Handjet', monospace;
+    text-shadow: 0 0 3px #0ff;
+}
+
+/* تأثير عند تمرير الماوس */
+.settings-btn:hover,
+select:hover,
+#musicToggleBtn:hover,
+#bgApplyBtn:hover,
+#enemyApplyBtn:hover,
+#settingsBackBtn:hover,
+#fireBtn:hover {
+    background: rgba(92, 92, 92, 0.7);
+    box-shadow: 0 0 10px #0ff, 0 0 20px #00f3ff;
+    transform: scale(1.05);
+}
